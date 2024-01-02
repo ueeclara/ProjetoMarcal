@@ -1,0 +1,39 @@
+import { UserDTO } from "../../dtos/user.dto";
+import { UserEntity } from "../../entities/user.entity";
+import { UserRepository } from "../user.repository";
+import {PrismaClient} from "@prisma/client"
+
+export class PrismaUserRepository implements UserRepository{
+    private prisma;
+    constructor(){
+        this.prisma = new PrismaClient()
+    }
+     async cadastrar(user: UserEntity): Promise<void> {
+         try {
+            await this.prisma.user.create({data: user})
+         } catch (error) {
+            throw new Error(`${error}`)
+         }
+     }
+     async listar(): Promise<UserEntity[]> {
+         try {
+            return await this.prisma.findMany()
+         } catch (error) {
+            throw new Error(`${error}`)
+         }
+     }
+     async atualizar(id: number, user: UserEntity): Promise<void> {
+         try {
+            await this.prisma.update({whete: {id}, data: {user}})
+         } catch (error) {
+            throw new Error(`${error}`)
+         }
+     }
+     async deletar(id: number): Promise<void> {
+         try {
+            await this.prisma.delete({where: {id}})
+         } catch (error) {
+            throw new Error(`${error}`)
+         }
+     }
+}
