@@ -10,10 +10,10 @@ routes
     .get("/users", (response: Response, request: Request) =>{
         listarUserController.handle(response, request)
     })
-    .delete("/deletarUser/:id", (request: Request, response: Response) =>{
+    .delete("/deletarUser/:email", (request: Request, response: Response) =>{
         deletarUserController.handle(request, response)
     })
-    .put("/editarUser/:id", (request: Request, response: Response) => {
+    .put("/editarUser/:email", (request: Request, response: Response) => {
         atualizarUserController.handle(request, response)
     })
 export default routes

@@ -1,5 +1,5 @@
-import { UserDTO } from "../../dtos/user.dto";
 import { UserEntity } from "../../entities/user.entity";
+import { UserPrismaMapping } from "../../mappings/user.prisma.mapping";
 import { UserRepository } from "../user.repository";
 import { PrismaClient } from "@prisma/client"
 
@@ -17,21 +17,22 @@ export class PrismaUserRepository implements UserRepository{
      }
      async listar(): Promise<UserEntity[]> {
          try {
-            return await this.prisma.users.findMany()
+            const user = await this.prisma.users.findMany()
+            return user.map(user => UserPrismaMapping.to(user))
          } catch (error) {
             throw new Error(`${error}`)
          }
      }
-     async atualizar(id: number, user: UserEntity): Promise<void> {
+     async atualizar(email: string, user: UserEntity): Promise<void> {
          try {
-            await this.prisma.users.update({where: {id}, data: user})
+            await this.prisma.users.update({where: {email}, data: user})
          } catch (error) {
             throw new Error(`${error}`)
          }
      }
-     async deletar(id: number): Promise<void> {
+     async deletar(email: string): Promise<void> {
          try {
-            await this.prisma.users.delete({where: {id}})
+            await this.prisma.users.delete({where: {email}})
          } catch (error) {
             throw new Error(`${error}`)
          }
