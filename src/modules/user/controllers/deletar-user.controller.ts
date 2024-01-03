@@ -6,9 +6,9 @@ export class DeletarUserController{
     constructor(private readonly service: DeletarUserService){}
     async handle(req: Request, res: Response):Promise<Response>{
         try {
-            const id = Number(req.params.id)
+            const email = req.params.email
 
-            await this.service.execute(id)
+            await this.service.execute(email)
 
             return res.status(200).send({message: "User deletado!"})
         } catch (error) {
