@@ -10,7 +10,7 @@ routes
     .get("/", (response: Response, request: Request) =>{
         listarProdutoController.handle(response, request)
     })
-    .delete("/deletar", (request: Request, response: Response) =>{
+    .delete("/deletar/:id", (request: Request, response: Response) =>{
         deletarProdutoController.handle(request, response)
     })
     .put("/editar/:id", (request: Request, response: Response) => {
