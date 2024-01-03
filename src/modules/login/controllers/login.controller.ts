@@ -6,7 +6,6 @@ export class LoginController{
     async handle(req: Request, res: Response):Promise<Response>{
         try {
             const {email, senha} = req.body
-
             if(!email){
                 return res.status(400).send({message: "Email é obrigatório"})
             }
