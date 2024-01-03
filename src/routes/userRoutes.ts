@@ -4,16 +4,16 @@ import {atualizarUserController, cadastrarUserController, deletarUserController,
 const routes = Router()
 
 routes
-    .post("/cadastrarUser", (request: Request, response: Response) => {
+    .post("/cadastrar", (request: Request, response: Response) => {
         cadastrarUserController.handle(request, response)
     })
-    .get("/listarUser", (response: Response, request: Request) =>{
+    .get("/", (response: Response, request: Request) =>{
         listarUserController.handle(response, request)
     })
-    .delete("deletarUser", (request: Request, response: Response) =>{
+    .delete("/deletar", (request: Request, response: Response) =>{
         deletarUserController.handle(request, response)
     })
-    .put("atualizarUser", (request: Request, response: Response) => {
+    .put("/editar/:id", (request: Request, response: Response) => {
         atualizarUserController.handle(request, response)
     })
 export default routes
