@@ -11,6 +11,6 @@ model users {
   id        Int    @id @default(autoincrement())
   categoria String @db.VarChar
   nome      String @db.VarChar
-  preco     String @map("preco") @db.VarChar
-  descricao String @map("descricao") @db.VarChar
+  preco     String @db.VarChar
+  descricao String @db.VarChar
 }
