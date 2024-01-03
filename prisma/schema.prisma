@@ -7,10 +7,15 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model users {
-  id        Int    @id @default(autoincrement())
+model produtos {
+  id        Int    @id(map: "users_pkey") @default(autoincrement())
   categoria String @db.VarChar
   nome      String @db.VarChar
   preco     String @db.VarChar
   descricao String @db.VarChar
+}
+
+model users {
+  email String @id(map: "usuarios_pkey") @db.VarChar
+  senha String @db.VarChar
 }
