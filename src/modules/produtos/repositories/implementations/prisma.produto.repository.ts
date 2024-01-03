@@ -1,4 +1,3 @@
-import { ProdutoDTO } from "../../dtos/produto.dto";
 import { ProdutoEntity } from "../../entities/produto.entity";
 import { ProdutoRepository } from "../produto.repository";
 import { PrismaClient } from "@prisma/client"
@@ -6,7 +5,7 @@ import { PrismaClient } from "@prisma/client"
 export class PrismaProdutoRepository implements ProdutoRepository{
     private prisma;
     constructor(){
-        this.prisma = new PrismaClient()
+      this.prisma = new PrismaClient()
     }
      async cadastrar(produto: ProdutoEntity): Promise<void> {
          try {
