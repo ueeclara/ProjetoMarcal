@@ -19,7 +19,7 @@ export class PrismaLoginRepository implements LoginRepository{
                 
                 const token = jwt.sign(
                     {
-                      id: usuario.id,
+                      id: usuario.email,
                     },
                     `${process.env.SECRET}`,
                     {
