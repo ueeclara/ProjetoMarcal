@@ -1,3 +1,5 @@
+alert("email: adm | senha: adm")
+
 async function logar(){
     try {
         const respostaServer = await fetch("localhost:3000/login")
