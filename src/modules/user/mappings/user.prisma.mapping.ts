@@ -4,11 +4,14 @@ import { UserEntity } from "../entities/user.entity"
 export class UserPrismaMapping{
     static to(user: users): UserEntity{
         return {
-            id: user.id,
-            categoria: user.categoria,
-            nome: user.nome,
-            preco: user.preco,
-            descricao: user.descricao
+            email: user.email,
+            senha: user.senha,
         }
-    } 
+    }
+    static from (user: UserEntity): users{
+        return {
+            email: user.email,
+            senha: user.senha,
+        }
+    }
 }
