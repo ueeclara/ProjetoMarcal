@@ -19,7 +19,7 @@ export class LoginController{
             if(!token){
                 return res.status(404).send({message: "User não encontrado"})
             }else{
-                return res.status(200).send(token)
+                return res.status(200).send({token})
             }
         } catch (error) {
             return res.status(500).send({message: `Erro ao logar - ${error}`})

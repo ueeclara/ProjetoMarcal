@@ -5,7 +5,7 @@ async function logar(){
         const respostaServer = await fetch("localhost:3000/login")
         const token = respostaServer.json()
 
-        if(!token){
+        if(!token.token){
             alert("Você não tem permissão para acessar essa página")
         }else{
             localStorage.setItem("token", token)
