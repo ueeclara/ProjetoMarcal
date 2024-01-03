@@ -140,4 +140,8 @@ async function editarProduto(id) {
 
 carregarProdutos();
 
-form.addEventListener('submit', criarProduto);s
+const logoutBtn = document.querySelector(".logout-btn")
+
+logoutBtn.addEventListener("click",()=>{
+    window.location.replace("login.html")
+})
